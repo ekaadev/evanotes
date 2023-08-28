@@ -1,9 +1,15 @@
 <template>
-  <div class="container min-w-full min-h-screen flex justify-center items-center">
+  <div
+    class="container min-w-full min-h-screen flex justify-center items-center"
+  >
     <div class="card-title mx-auto pb-7 px-10 text-center">
-      <h1 class="tagline font-main font-bold text-6xl">Simplify, Organize, Thrive</h1>
+      <h1 class="tagline font-main font-bold text-6xl">
+        Simplify, Organize, Thrive
+      </h1>
       <div class="box-sub-tagline">
-        <a class="sub-tagline font-main font-medium text-2xl" href="#">Let's Try !</a>
+        <a class="sub-tagline font-main font-medium text-2xl" href="#"
+          >Let's Try !</a
+        >
       </div>
     </div>
   </div>
@@ -15,7 +21,7 @@ export default {
 }
 </script>
 <style>
-  .box-sub-tagline {
+.box-sub-tagline {
   margin-top: 4rem;
 }
 
@@ -32,7 +38,7 @@ export default {
 }
 
 .sub-tagline::before {
-  content: "";
+  content: '';
   width: 100%;
   position: absolute;
   bottom: -6px;

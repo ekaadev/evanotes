@@ -1,12 +1,17 @@
 <template>
   <header
-    class="flex flex-wrap justify-between top-0 left-0 bg-transparent  min-w-full w-full pl-16 pr-16 py-3 z-12"
+    class="flex flex-wrap justify-between top-0 left-0 bg-transparent min-w-full w-full pl-16 pr-16 py-3 z-12"
   >
     <div class="logo flex items-center">
       <a
         class="relative top-2 font-custom flex text-start font-black text-slate-600 z-11"
         href="#"
-        ><img class="relative bottom-2" src="@/assets/pen.svg" alt="logo" width="40">Evanote</a
+        ><img
+          class="relative bottom-2"
+          src="@/assets/pen.svg"
+          alt="logo"
+          width="40"
+        />Evanote</a
       >
     </div>
     <nav class="flex items-center">
@@ -39,7 +44,7 @@
   </header>
 </template>
 <style>
-  body {
+body {
   background-image: url('@/assets/background.svg');
   background-size: cover;
   background-attachment: fixed;
@@ -49,14 +54,12 @@ header {
   backdrop-filter: blur(10px);
 }
 
-
-
 .nav-link {
   position: relative;
 }
 
 .nav-link::before {
-  content: "";
+  content: '';
   width: 100%;
   position: absolute;
   bottom: -4px;
@@ -70,5 +73,4 @@ header {
 .nav-link:hover::before {
   transform: scaleX(1);
 }
-
 </style>
