@@ -58,7 +58,12 @@
           />
         </div>
         <div class="mx-5">
-          <select id="" v-model="selectedFilter" name="" class="bg-gray-50 p-1 rounded text-sm text-gray-400 shadow-sm">
+          <select
+            id=""
+            v-model="selectedFilter"
+            name=""
+            class="bg-gray-50 p-1 rounded text-sm text-gray-400 shadow-sm"
+          >
             <option value="all">All</option>
             <option value="finish">Finish</option>
             <option value="unfinish">Unfinish</option>
@@ -67,21 +72,37 @@
       </div>
 
       <div class="container-content w-full flex justify-center">
-        <div
-          class="w-11/12 mt-6 flex flex-row gap-4 flex-wrap justify-start"
-        >
+        <div class="w-11/12 mt-6 flex flex-row gap-4 flex-wrap justify-start">
           <div
             v-for="item in filterNotes()"
             :key="item.id"
             class="rounded-md w-64 h-72 mx-1 px-3 py-1 bg-neutral-100 border border-gray-400 flex flex-col hover:shadow-xl duration-300"
           >
-            <div class="title w-full font-medium mb-3" :style="{ 'text-decoration': item.isDone ? 'line-through' : 'none' }">{{ item.title }}</div>
-            <div class="deskripsi w-full mb-3 text-sm font-normal overflow-y-auto h-52" :style="{ 'text-decoration': item.isDone ? 'line-through' : 'none' }">{{ item.deskripsi }}</div>
-            <div class="option w-full flex justify-end items-center">
-              <i class="uil uil-thumbs-up text-base rounded-full hover:bg-gray-400 w-8 text-center text-neutral-950 mb-2 cursor-pointer duration-300" @click="toggleDone(item)"></i>
-              <i class="uil uil-trash-alt text-base rounded-full hover:bg-gray-400 w-8 text-center text-neutral-950 mb-2 cursor-pointer duration-300"></i>
+            <div
+              class="title w-full font-medium mb-3"
+              :style="{
+                'text-decoration': item.isDone ? 'line-through' : 'none',
+              }"
+            >
+              {{ item.title }}
             </div>
-            
+            <div
+              class="deskripsi w-full mb-3 text-sm font-normal overflow-y-auto h-52"
+              :style="{
+                'text-decoration': item.isDone ? 'line-through' : 'none',
+              }"
+            >
+              {{ item.deskripsi }}
+            </div>
+            <div class="option w-full flex justify-end items-center">
+              <i
+                class="uil uil-thumbs-up text-base rounded-full hover:bg-gray-400 w-8 text-center text-neutral-950 mb-2 cursor-pointer duration-300"
+                @click="toggleDone(item)"
+              ></i>
+              <i
+                class="uil uil-trash-alt text-base rounded-full hover:bg-gray-400 w-8 text-center text-neutral-950 mb-2 cursor-pointer duration-300"
+              ></i>
+            </div>
           </div>
         </div>
       </div>
@@ -158,14 +179,19 @@ export default {
         {
           title: 'Projek 1',
           deskripsi: 'ini deskripsi yang panjang',
-          isDone: false
+          isDone: false,
         },
         {
           title: 'Projek 2',
           deskripsi: 'menyelesaikan projek 2',
-          isDone: false
+          isDone: false,
         },
-        { title: 'Projek 3', deskripsi: 'Anda dapat mengubah gaya CSS pada elemen scdsdcsdscs dssdcscsdcsdcsdcddsc sdcsds', isDone: false },
+        {
+          title: 'Projek 3',
+          deskripsi:
+            'Anda dapat mengubah gaya CSS pada elemen scdsdcsdscs dssdcscsdcsdcsdcddsc sdcsds',
+          isDone: false,
+        },
       ],
     }
   },
@@ -175,20 +201,20 @@ export default {
       this.dashBoardWidth = this.isDashboardOpen ? '18rem' : '4rem'
     },
     toggleAddProject() {
-      this.addProject = !this.addProject;
+      this.addProject = !this.addProject
     },
     toggleDone(item) {
-      item.isDone = !item.isDone;
+      item.isDone = !item.isDone
     },
     filterNotes() {
       if (this.selectedFilter === 'all') {
-        return this.notesProject;
+        return this.notesProject
       } else if (this.selectedFilter === 'finish') {
-        return this.notesProject.filter(item => item.isDone === true);
+        return this.notesProject.filter((item) => item.isDone === true)
       } else if (this.selectedFilter === 'unfinish') {
-        return this.notesProject.filter(item => item.isDone === false);
+        return this.notesProject.filter((item) => item.isDone === false)
       }
-    }
+    },
   },
 }
 </script>

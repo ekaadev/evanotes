@@ -44,10 +44,8 @@
   </header>
 </template>
 <style>
-
 header {
   backdrop-filter: blur(10px);
-
 }
 
 .nav-link {

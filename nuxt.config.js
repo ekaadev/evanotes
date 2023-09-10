@@ -14,7 +14,10 @@ export default {
         rel: 'stylesheet',
         href: 'https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Poppins:wght@400;500;600;700&display=swap',
       },
-      { rel:"stylesheet", href:"https://unicons.iconscout.com/release/v4.0.8/css/line.css" },
+      {
+        rel: 'stylesheet',
+        href: 'https://unicons.iconscout.com/release/v4.0.8/css/line.css',
+      },
     ],
   },
 
@@ -23,9 +26,9 @@ export default {
       {
         name: 'create',
         path: '/create',
-        components: '~/pages/create.vue'
+        components: '~/pages/create.vue',
       },
-    ]
+    ],
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
