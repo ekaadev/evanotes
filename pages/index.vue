@@ -1,15 +1,17 @@
 <template>
   <div
-    class="container min-w-full min-h-screen flex justify-center items-center"
+    class="container min-w-full min-h-screen flex justify-center items-center bg-slate-300"
   >
-    <div class="card-title mx-auto pb-7 px-10 text-center">
-      <h1 class="tagline font-main font-bold text-6xl">
-        Simplify, Organize, Thrive
-      </h1>
-      <div class="box-sub-tagline">
-        <a class="sub-tagline font-main font-medium text-2xl" href="#"
-          >Let's Try !</a
-        >
+    <div class="container-blur w-3/4 h-96 rounded-3xl shadow-xl flex flex-col justify-center items-center text-center bg-slate-50">
+      <div class="card-title mx-auto pb-7 px-10 text-center backdrop-blur-sm">
+        <h1 class="tagline font-main font-bold text-6xl">
+          Simplify, Organize, Thrive
+        </h1>
+        <div class="box-sub-tagline">
+          <nuxt-link class="sub-tagline font-main font-medium text-2xl" to="/create"
+            >Let's Try !</nuxt-link
+          >
+        </div>
       </div>
     </div>
   </div>

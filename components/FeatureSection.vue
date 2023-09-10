@@ -1,9 +1,9 @@
 <template>
   <div id="feature" class="container-feature min-w-full min-h-screen">
     <h1
-      class="mt-5 text-center font-main font-bold text-3xl col-start-2 col-end-3"
+      class="mt-20 text-center font-main font-bold text-3xl col-start-2 col-end-3"
     >
-      Unlock Your Productivity Potential with Our Powerful Features!
+      Unlock Your Productivity Potential with Our Powerful Features !
     </h1>
     <div
       class="feature mx-auto w-4/6 col-start-2 col-end-3 mt-12 drop-shadow-xl"

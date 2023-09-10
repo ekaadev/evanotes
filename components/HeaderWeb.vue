@@ -1,6 +1,6 @@
 <template>
   <header
-    class="flex flex-wrap justify-between top-0 left-0 bg-transparent min-w-full w-full pl-16 pr-16 py-3 z-12"
+    class="flex flex-wrap justify-between top-0 left-0 bg-transparent min-w-full w-full pl-16 pr-16 py-3 z-10 shadow-md"
   >
     <div class="logo flex items-center">
       <a
@@ -31,12 +31,12 @@
         >About</a
       >
       <a
-        class="py-1 -mr-4 px-3 font-custom z-11 font-medium text-gray-600 hover:text-gray-950"
+        class="py-1 -mr-4 px-3 font-custom z-11 font-medium text-gray-600 border border-slate-950 rounded hover:text-gray-950 duration-300"
         href="#Log-in"
         >Log in</a
       >
       <a
-        class="mx-6 z-11 py-1 px-3 font-custom font-medium text-l bg-slate-50 text-slate-600 rounded hover:text-slate-950 hover:bg-slate-200 focus:bg-slate-200 active:bg-slate-200"
+        class="mx-6 z-11 py-1 px-3 font-custom font-medium text-l bg-slate-950 text-slate-50 rounded border border-slate-950 hover:text-slate-950 hover:bg-slate-200 focus:bg-slate-200 active:bg-slate-200 duration-300"
         href="#Sign-in"
         >Sign in</a
       >
@@ -44,14 +44,10 @@
   </header>
 </template>
 <style>
-body {
-  background-image: url('@/assets/background.svg');
-  background-size: cover;
-  background-attachment: fixed;
-}
 
 header {
   backdrop-filter: blur(10px);
+
 }
 
 .nav-link {
