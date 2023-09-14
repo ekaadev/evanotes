@@ -126,7 +126,7 @@
                   @click="toggleAddProject"
                 ></i>
               </div>
-              <form action="" class="mt-4 mb-6 mx-9">
+              <form action="" class="mt-4 mb-6 mx-9" @:submit.prevent>
                 <div class="row-title mb-5">
                   <label for="" class="block mb-2 text-xl font-normal"
                     >Title</label
