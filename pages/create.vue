@@ -35,6 +35,7 @@
             'background-color': isDashboardOpen ? '#10b981' : '',
             color: isDashboardOpen ? '#fff' : '',
           }"
+          @click="toggleAddProject"
         ></i>
         <h1
           class="font-medium p-1 px-2 rounded cursor-pointer origin-left duration-300 my-auto whitespace-nowrap hover:bg-gray-600"
@@ -47,7 +48,7 @@
     </div>
     <div class="p-4 ml-24 w-screen flex flex-col">
       <div
-        class="header-notes flex flex-wrap w-ful min-w-full px-4 py-1 justify-center border border-slate-950 items-center"
+        class="header-notes flex flex-wrap w-ful min-w-full px-4 py-1 justify-center items-center"
       >
         <div class="search-bar bg-gray-50 p-1 w-2/5 flex rounded shadow-md">
           <i class="uil uil-search mx-3 text-gray-400"></i
@@ -62,7 +63,7 @@
             id=""
             v-model="selectedFilter"
             name=""
-            class="bg-gray-50 p-1 rounded text-sm text-gray-400 shadow-sm"
+            class="bg-gray-50 p-1 rounded text-sm text-gray-400 shadow-md"
           >
             <option value="all">All</option>
             <option value="finish">Finish</option>
@@ -74,8 +75,8 @@
       <div class="container-content w-full flex justify-center">
         <div class="w-11/12 mt-6 flex flex-row gap-4 flex-wrap justify-start">
           <div
-            v-for="item in filterNotes()"
-            :key="item.id"
+            v-for="(item, index) in filterNotes()"
+            :key="index.id"
             class="rounded-md w-64 h-72 mx-1 px-3 py-1 bg-neutral-100 border border-gray-400 flex flex-col hover:shadow-xl duration-300"
           >
             <div
@@ -132,6 +133,7 @@
                   >
                   <input
                     id=""
+                    v-model="titleNotes"
                     type="text"
                     name=""
                     class="w-full border-solid border-2 border-emerald-500/50 focus:outline-none text-lg p-2 rounded"
@@ -145,6 +147,7 @@
                   >
                   <textarea
                     id=""
+                    v-model="deskripsiNotes"
                     class="w-full h-48 resize-none border-solid border-2 border-emerald-500/50 focus:outline-none text-base p-2 rounded"
                     name=""
                     spellcheck="false"
@@ -154,6 +157,7 @@
                 <button
                   type="button"
                   class="w-full text-center text-xl text-slate-50 p-2 rounded bg-emerald-400 hover:bg-emerald-600 duration-300 focus:bg-emerald-600"
+                  @click="toggleAddNotes"
                 >
                   Add note
                 </button>
@@ -193,6 +197,8 @@ export default {
           isDone: false,
         },
       ],
+      titleNotes: '',
+      deskripsiNotes: '',
     }
   },
   methods: {
@@ -200,12 +206,15 @@ export default {
       this.isDashboardOpen = !this.isDashboardOpen
       this.dashBoardWidth = this.isDashboardOpen ? '18rem' : '4rem'
     },
+
     toggleAddProject() {
       this.addProject = !this.addProject
     },
+
     toggleDone(item) {
       item.isDone = !item.isDone
     },
+
     filterNotes() {
       if (this.selectedFilter === 'all') {
         return this.notesProject
@@ -214,6 +223,16 @@ export default {
       } else if (this.selectedFilter === 'unfinish') {
         return this.notesProject.filter((item) => item.isDone === false)
       }
+    },
+
+    toggleAddNotes() {
+      const newItem = {
+        title: this.titleNotes,
+        deskripsi: this.deskripsiNotes,
+        isDone: false,
+      }
+      this.notesProject.push(newItem)
+      this.addProject = false
     },
   },
 }

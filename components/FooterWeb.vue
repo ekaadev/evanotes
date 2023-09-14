@@ -1,9 +1,13 @@
 <template>
-  <footer id="about" class="min-w-full">
-    <div class="container-about w-11/12 mx-auto mt-16 flex justify-between">
-      <div class="w-5/12 m-auto text-center">
-        <h4 class="font-main text-xl font-semibold">What's Evanotes ?</h4>
-        <p class="mt-5 text-slate-800 font-main font-medium text-base">
+  <footer id="about" class="min-w-full bg-slate-300 pt-4">
+    <div
+      class="container-about w-full mx-auto mt-16 flex flex-wrap justify-around flex-row"
+    >
+      <div class="w-1/4 text-start">
+        <h4 class="font-main text-base font-semibold mb-5">
+          What's Evanotes ?
+        </h4>
+        <p class="text-slate-800 font-main font-medium text-sm">
           Evanotes is your ultimate task management companion, designed to
           elevate your productivity and simplify your life. Seamlessly organize
           your tasks, set priorities, and track progress with intuitive ease.
@@ -12,17 +16,14 @@
           accomplishments. Embrace efficiency and seize control of your daily
           tasks with Evanotes.
         </p>
-        <h4 class="font-main font-medium mt-5">Social Media</h4>
-        <a href="https://twitter.com"
-          ><img
-            class="m-auto"
-            src="@/assets/twitter.svg"
-            alt="logo-twitter"
-            width="30"
-        /></a>
+      </div>
+
+      <div class="w-1/4 text-end">
+        <h4 class="font-main font-semibold mb-5">Social Media</h4>
+        <a href="#"><i class="uil uil-twitter text-slate-800 text-xl"></i></a>
       </div>
     </div>
-    <p class="text-center min-w-full font-custom mt-8">
+    <p class="text-center min-w-full font-custom p-6 text-slate-800">
       &copy; ekaadev 2023. All right reserved
     </p>
   </footer>

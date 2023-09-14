@@ -1,5 +1,8 @@
 <template>
-  <div id="feature" class="container-feature min-w-full min-h-screen">
+  <div
+    id="feature"
+    class="container-feature min-w-full min-h-screen border-b-slate-400 border pb-20"
+  >
     <h1
       class="mt-20 text-center font-main font-bold text-3xl col-start-2 col-end-3"
     >
