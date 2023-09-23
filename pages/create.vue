@@ -102,6 +102,7 @@
               ></i>
               <i
                 class="uil uil-trash-alt text-base rounded-full hover:bg-gray-400 w-8 text-center text-neutral-950 mb-2 cursor-pointer duration-300"
+                @click="deleteTodo(index)"
               ></i>
             </div>
           </div>
@@ -233,6 +234,10 @@ export default {
       }
       this.notesProject.push(newItem)
       this.addProject = false
+    },
+
+    deleteTodo(index) {
+      this.notesProject.splice(index, 1)
     },
   },
 }
