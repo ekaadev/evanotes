@@ -53,10 +53,13 @@
         <div class="search-bar bg-gray-50 p-1 w-2/5 flex rounded shadow-md">
           <i class="uil uil-search mx-3 text-gray-400"></i
           ><input
+            v-model="searchQuery"
             class="w-full bg-transparent rounded text-slate-800 text-sm focus:outline-none"
             type="text"
             placeholder="Search"
           />
+          <!-- <button type="button" @click="resultQuery()">Search</button> -->
+          
         </div>
         <div class="mx-5">
           <select
@@ -176,6 +179,7 @@ export default {
   layout: 'minimal',
   data() {
     return {
+      tasks: [],
       isDashboardOpen: false,
       dashBoardWidth: '4rem',
       addProject: false,
@@ -198,34 +202,72 @@ export default {
           isDone: false,
         },
       ],
+      searchQuery: '',
       titleNotes: '',
       deskripsiNotes: '',
     }
   },
+
+  async fetch () {
+    try {
+      const res = await this.$axios.get("/rest/v1/tasks", {
+        headers: {apikey : "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6IndhemRpYm56eXB0Z2lhYXZycHVyIiwicm9sZSI6ImFub24iLCJpYXQiOjE2OTUzODc0OTIsImV4cCI6MjAxMDk2MzQ5Mn0.hHccK1njvPRp1R1u6xf4B20Jd4FfVQ6tTgOflThlZRU"}
+      });
+      this.tasks = res.data;
+    } catch (error) {
+      console.log(error);
+    }
+  },
+
+  computed: {
+    resultQuery() {
+      if (this.searchQuery) {
+        return this.notesProject.filter((item) => {
+          return this.searchQuery
+            .toLowerCase()
+            .split(" ")
+            .every((v) => item.title.toLowerCase().includes(v));
+        });
+      } else {
+        console.log(this.notesProject);
+        return this.notesProject;
+      }
+    }
+  },
+
+  mounted () {
+    console.log("Task: ", this.tasks);
+  },
+
   methods: {
+    // dashboard side
     toggleDashboard() {
-      this.isDashboardOpen = !this.isDashboardOpen
-      this.dashBoardWidth = this.isDashboardOpen ? '18rem' : '4rem'
+      this.isDashboardOpen = !this.isDashboardOpen;
+      this.dashBoardWidth = this.isDashboardOpen ? '18rem' : '4rem';
     },
 
+    // tombol pop up add notes
     toggleAddProject() {
-      this.addProject = !this.addProject
+      this.addProject = !this.addProject;
     },
 
+    // tombol done(true) or done(false)
     toggleDone(item) {
-      item.isDone = !item.isDone
+      item.isDone = !item.isDone;
     },
 
+    // fitur filter berdasarkan kategori
     filterNotes() {
       if (this.selectedFilter === 'all') {
-        return this.notesProject
+        return this.notesProject;
       } else if (this.selectedFilter === 'finish') {
-        return this.notesProject.filter((item) => item.isDone === true)
+        return this.notesProject.filter((item) => item.isDone === true);
       } else if (this.selectedFilter === 'unfinish') {
-        return this.notesProject.filter((item) => item.isDone === false)
+        return this.notesProject.filter((item) => item.isDone === false);
       }
     },
 
+    // fitur add notes
     toggleAddNotes() {
       const newItem = {
         title: this.titleNotes,
@@ -236,6 +278,7 @@ export default {
       this.addProject = false
     },
 
+    // fitur delete notes
     deleteTodo(index) {
       this.notesProject.splice(index, 1)
     },
@@ -245,9 +288,6 @@ export default {
 
 <style>
 .create-page {
-  /* background-image: url('~@/assets/background2.svg');
-  background-size: cover;
-  background-attachment: fixed; */
   background: #e5e7eb;
 }
 </style>
