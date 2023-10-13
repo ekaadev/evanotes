@@ -128,7 +128,11 @@
                   @click="toggleAddProject"
                 ></i>
               </div>
-              <form id="tambah-tasks" class="mt-4 mb-6 mx-9" @submit.prevent="onFormSumbit">
+              <form
+                id="tambah-tasks"
+                class="mt-4 mb-6 mx-9"
+                @submit.prevent="onFormSumbit"
+              >
                 <div class="row-title mb-5">
                   <label for="title" class="block mb-2 text-xl font-normal"
                     >Title</label
@@ -224,15 +228,19 @@ export default {
         title: document.getElementById('title').value,
         deskripsi: document.getElementById('deskripsi').value,
       }
-      const response = await fetch('https://wazdibnzyptgiaavrpur.supabase.co/rest/v1/tasks', {
-        method: "POST",
-        headers: {
-          apikey: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6IndhemRpYm56eXB0Z2lhYXZycHVyIiwicm9sZSI6ImFub24iLCJpYXQiOjE2OTUzODc0OTIsImV4cCI6MjAxMDk2MzQ5Mn0.hHccK1njvPRp1R1u6xf4B20Jd4FfVQ6tTgOflThlZRU", 
-          "Content-Type": "application/json", 
-          Prefer: "return=representation"
-        },
-        body: JSON.stringify(dataForm)
-      })
+      const response = await fetch(
+        'https://wazdibnzyptgiaavrpur.supabase.co/rest/v1/tasks',
+        {
+          method: 'POST',
+          headers: {
+            apikey:
+              'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6IndhemRpYm56eXB0Z2lhYXZycHVyIiwicm9sZSI6ImFub24iLCJpYXQiOjE2OTUzODc0OTIsImV4cCI6MjAxMDk2MzQ5Mn0.hHccK1njvPRp1R1u6xf4B20Jd4FfVQ6tTgOflThlZRU',
+            'Content-Type': 'application/json',
+            Prefer: 'return=representation',
+          },
+          body: JSON.stringify(dataForm),
+        }
+      )
 
       const data = await response?.json()
       this.$router.push(`/create/${data[0]}?.id`)
