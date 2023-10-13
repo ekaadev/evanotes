@@ -20,7 +20,7 @@
 
       <div class="w-1/4 text-end">
         <h4 class="font-main font-semibold mb-5">Social Media</h4>
-        <a href="#"><i class="uil uil-twitter text-slate-800 text-xl"></i></a>
+        <a href="#"><i class="uil uil-github text-slate-800 text-xl"></i></a>
       </div>
     </div>
     <p class="text-center min-w-full font-custom p-6 text-slate-800">
