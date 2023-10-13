@@ -1,4 +1,50 @@
-# web-app
+# Evanotes - Web Application
+
+Evanotes is application to organize your task and create notes.
+
+# Feature
+
+1. Create to do list
+
+# Upcoming feature
+
+1. Create category
+2. Calendar
+
+# Tech Stack
+
+1. Vue.js
+2. Nuxt.js
+3. Tailwind CSS
+4. Supabase
+
+# Notes
+
+This app is actually under development as there are still bugs.
+
+# Evanotes - Aplikasi Web
+
+Evanotes adalah aplikasi to do list yang dapat membantu dan mengatur tugas-tugas anda agar lebih produktif.
+
+# Fitur
+
+1. Membuat to do list
+
+# Fitur yang akan datang
+
+1. Membuat kategori to do list
+2. Kalender
+
+# Teknologi yang dipakai
+
+1. Vue.js
+2. Nuxt.js
+3. Tailwind CSS
+4. Supabase
+
+# Catatan
+
+Aplikasi ini masih dalam pengembangan karena masih terdapat bug
 
 ## Build Setup
 
