@@ -58,7 +58,6 @@
             type="text"
             placeholder="Search"
           />
-          <!-- <button type="button" @click="resultQuery()">Search</button> -->
         </div>
         <div class="mx-5">
           <select
@@ -77,14 +76,14 @@
       <div class="container-content w-full flex justify-center">
         <div class="w-11/12 mt-6 flex flex-row gap-4 flex-wrap justify-start">
           <div
-            v-for="(item, index) in resultQuery"
+            v-for="(item, index) in tasks"
             :key="index.id"
-            class="rounded-md w-64 h-72 mx-1 px-3 py-1 bg-neutral-100 border border-gray-400 flex flex-col hover:shadow-xl duration-300"
+            class="rounded-md w-[297px] h-72 mx-1 px-3 py-1 bg-neutral-100 border border-gray-400 flex flex-col hover:shadow-xl duration-300"
           >
             <div
               class="title w-full font-medium mb-3"
               :style="{
-                'text-decoration': item.isDone ? 'line-through' : 'none',
+                'text-decoration': item.done ? 'line-through' : 'none',
               }"
             >
               {{ item.title }}
@@ -92,7 +91,7 @@
             <div
               class="deskripsi w-full mb-3 text-sm font-normal overflow-y-auto h-52"
               :style="{
-                'text-decoration': item.isDone ? 'line-through' : 'none',
+                'text-decoration': item.done ? 'line-through' : 'none',
               }"
             >
               {{ item.deskripsi }}
@@ -129,30 +128,28 @@
                   @click="toggleAddProject"
                 ></i>
               </div>
-              <form action="" class="mt-4 mb-6 mx-9" @:submit.prevent>
+              <form id="tambah-tasks" class="mt-4 mb-6 mx-9" @submit.prevent="onFormSumbit">
                 <div class="row-title mb-5">
-                  <label for="" class="block mb-2 text-xl font-normal"
+                  <label for="title" class="block mb-2 text-xl font-normal"
                     >Title</label
                   >
                   <input
-                    id=""
-                    v-model="titleNotes"
+                    id="title"
                     type="text"
-                    name=""
+                    name="title"
                     class="w-full border-solid border-2 border-emerald-500/50 focus:outline-none text-lg p-2 rounded"
                     spellcheck="false"
                     placeholder="Untilted"
                   />
                 </div>
                 <div class="row-description mb-5">
-                  <label for="" class="block mb-2 text-lg font-normal"
+                  <label for="deskripsi" class="block mb-2 text-lg font-normal"
                     >Description</label
                   >
                   <textarea
-                    id=""
-                    v-model="deskripsiNotes"
+                    id="deskripsi"
                     class="w-full h-48 resize-none border-solid border-2 border-emerald-500/50 focus:outline-none text-base p-2 rounded"
-                    name=""
+                    name="deskripsi"
                     spellcheck="false"
                     placeholder="Note"
                   ></textarea>
@@ -183,24 +180,6 @@ export default {
       dashBoardWidth: '4rem',
       addProject: false,
       selectedFilter: 'all',
-      notesProject: [
-        {
-          title: 'Projek 1',
-          deskripsi: 'ini deskripsi yang panjang',
-          isDone: false,
-        },
-        {
-          title: 'Projek 2',
-          deskripsi: 'menyelesaikan projek 2',
-          isDone: false,
-        },
-        {
-          title: 'Projek 3',
-          deskripsi:
-            'Anda dapat mengubah gaya CSS pada elemen scdsdcsdscs dssdcscsdcsdcsdcddsc sdcsds',
-          isDone: false,
-        },
-      ],
       searchQuery: '',
       titleNotes: '',
       deskripsiNotes: '',
@@ -225,7 +204,7 @@ export default {
     // fitur search
     resultQuery() {
       if (this.searchQuery) {
-        return this.notesProject.filter((item) =>
+        return this.tasks.filter((item) =>
           item.title.includes(this.searchQuery)
         )
       } else {
@@ -239,6 +218,26 @@ export default {
   },
 
   methods: {
+    // tambah tasks
+    async onFormSumbit() {
+      const dataForm = {
+        title: document.getElementById('title').value,
+        deskripsi: document.getElementById('deskripsi').value,
+      }
+      const response = await fetch('https://wazdibnzyptgiaavrpur.supabase.co/rest/v1/tasks', {
+        method: "POST",
+        headers: {
+          apikey: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6IndhemRpYm56eXB0Z2lhYXZycHVyIiwicm9sZSI6ImFub24iLCJpYXQiOjE2OTUzODc0OTIsImV4cCI6MjAxMDk2MzQ5Mn0.hHccK1njvPRp1R1u6xf4B20Jd4FfVQ6tTgOflThlZRU", 
+          "Content-Type": "application/json", 
+          Prefer: "return=representation"
+        },
+        body: JSON.stringify(dataForm)
+      })
+
+      const data = await response?.json()
+      this.$router.push(`/create/${data[0]}?.id`)
+    },
+
     // dashboard side
     toggleDashboard() {
       this.isDashboardOpen = !this.isDashboardOpen
@@ -252,7 +251,7 @@ export default {
 
     // tombol done(true) or done(false)
     toggleDone(item) {
-      item.isDone = !item.isDone
+      item.done = !item.done
     },
 
     // fitur filter berdasarkan kategori (error)
@@ -279,7 +278,7 @@ export default {
 
     // fitur delete notes
     deleteTodo(index) {
-      this.notesProject.splice(index, 1)
+      this.tasks.splice(index, 1)
     },
   },
 }
